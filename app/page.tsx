@@ -1,11 +1,23 @@
-import Image from 'next/image'
+import axios from 'axios'
 
-export default function Home() {
+async function getUserDetails() {
+  const response = await axios.get('https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details')
+  return response.data
+}
+
+export default async function Home() {
+  // fetch user details
+  const userData = await getUserDetails()
+  console.log(userData)
   return (
-    <div>
-      <h1>Home</h1>
-      {/* <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} /> */}
-      <h2>This is my home page.</h2>
+    <div className="flex flex-col justify-center h-screen">
+      <div className="flex justify-center">
+        <div className="border p-8 rounded">
+          <div>Name: {userData?.name}</div>
+
+          {userData?.email}
+        </div>
+      </div>
     </div>
   )
 }

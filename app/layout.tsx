@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <h1 className="p-2 text-left border-b-2">Medium Website</h1>
+        <div className="flex flex-row border-b-2 p-2">
+          <Image className="p-2" src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          <h1 className="text-left p-2">Joselyn Website</h1>
+        </div>
+
         {children}
       </body>
     </html>
