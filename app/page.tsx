@@ -1,8 +1,11 @@
 import axios from 'axios'
+import client from '../db'
 
 async function getUserDetails() {
-  const response = await axios.get('https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details')
-  return response.data
+  //const response = await axios.get('https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details')
+  //const response = await axios.get('http://localhost:3000/api/user/')
+  const userDetails = await client.user.findFirst({})
+  return { name: userDetails?.username, email: userDetails?.username }
 }
 
 export default async function Home() {
